@@ -4,7 +4,7 @@ import Button from './debounce/Button'
 import useForm from './useForm'
 
 // 如果要看前幾題的輸出
-//  result()
+ result()
 
 function App() {
   const { handleChange, handleSubmit, values, errors } = useForm(

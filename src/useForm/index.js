@@ -8,10 +8,10 @@ const useForm = ({ initialValues, validation, onSubmit }) => {
   const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
-
+    
+    //如果是checkbox的input
     if (e.target.hasOwnProperty('checked')) {
       const { name, checked } = e.target
-      console.log('have', e.target.name)
       setValues((prev) => { return { ...prev, [name]: checked, } })
 
     } else {

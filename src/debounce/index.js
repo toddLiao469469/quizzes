@@ -1,4 +1,4 @@
-const debounce = (fn, wait) => {
+const debounce = (fn, timeout) => {
     const callback = fn
     let timerId = null
 
@@ -11,7 +11,7 @@ const debounce = (fn, wait) => {
         clearTimeout(timerId)
         timerId = setTimeout(function () {
             callback.apply(context, args)
-        }, wait)
+        }, timeout)
     }
 
 

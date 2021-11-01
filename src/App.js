@@ -3,10 +3,13 @@ import result from './result'
 import Button from './debounce/Button'
 import useForm from './useForm'
 
+// 如果要看前幾題的輸出
+//  result()
+
 function App() {
   const { handleChange, handleSubmit, values, errors } = useForm(
     {
-      initialValues: { account: "123", password: "456", rememberMe: false },
+      initialValues: { account: "", password: "", rememberMe: false },
       validation: (values) => {
         const errors = {}
         if (!values.account) {
@@ -25,7 +28,7 @@ function App() {
 
         <h3>debounce</h3>
         <Button />
-        
+
         <h3>useForm</h3>
         <input name="account" onChange={handleChange} value={values.account}
           placeholder="Account" />

@@ -1,35 +1,39 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 
 const useForm = ({ initialValues, validation, onSubmit }) => {
 
-    const [values, setValues] = useState(initialValues)
-    const [errors, setErrors] = useState({})
+  const [values, setValues] = useState(initialValues)
+  const [errors, setErrors] = useState({})
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
 
-        if (e.target.hasOwnProperty('checked')) {
-            const { name, checked } = e.target
-            console.log('have', e.target.name)
-            setValues((prev) => { return { ...prev, [name]: checked, } })
+    if (e.target.hasOwnProperty('checked')) {
+      const { name, checked } = e.target
+      console.log('have', e.target.name)
+      setValues((prev) => { return { ...prev, [name]: checked, } })
 
-        } else {
-            const { name, value } = e.target
-            setValues((prev) => { return { ...prev, [name]: value, } })
-        }
-
-        setErrors({})
-
+    } else {
+      const { name, value } = e.target
+      setValues((prev) => { return { ...prev, [name]: value, } })
     }
 
-    const handleSubmit = (e) => {
-        console.log('handleSubmit', validation(values))
-        setErrors(validation(values))
+    setErrors({})
 
-        onSubmit()
+  }
+
+  const handleSubmit = (e) => {
+    const errors = validation(values)
+    setErrors(errors)
+    if (Object.entries(errors).length !== 0) {
+      return;
     }
+    onSubmit(values)
+  }
 
-    return { values, handleChange, handleSubmit, errors }
+
+
+  return { handleChange, handleSubmit, values, errors }
 }
 export default useForm

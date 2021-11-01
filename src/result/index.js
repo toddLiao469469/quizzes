@@ -1,6 +1,7 @@
 import Stack from "../stack"
 import fibonacci from "../fibonacci"
-
+import dataTransFormer from '../dataTransFormer'
+import {userIds,orderIds,userOrders ,userData,orderData} from '../dataTransFormer/data'
 const result = () => {
     console.log('fibonacci:');
     [0, 1, 2, 3, 4].forEach(x => {
@@ -17,9 +18,11 @@ const result = () => {
     const size = myStack.size() 
     console.log(popResult,size)
 
-    console.log('------------');
-
-
+    console.log('------------\n\n');
+    console.log('dataTransFormer:');
+    
+    const result =  dataTransFormer({ userIds, userData, orderIds, orderData, userOrders });
+    console.log(result)
 }
 
 

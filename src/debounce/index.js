@@ -1,21 +1,21 @@
 const debounce = (fn, timeout) => {
-    const callback = fn
-    let timerId = null
+  const callback = fn
+  let timerId = null
 
-    const debounced = (...rest) => {
+  const debounced = (...rest) => {
 
-        const context = this
+    const context = this
 
-        const args = rest
+    const args = rest
 
-        clearTimeout(timerId)
-        timerId = setTimeout(function () {
-            callback.apply(context, args)
-        }, timeout)
-    }
+    clearTimeout(timerId)
+    timerId = setTimeout(function () {
+      callback.apply(context, args)
+    }, timeout)
+  }
 
 
-    return debounced
+  return debounced
 }
 
 
